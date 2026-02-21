@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKHIL M - Principal Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            border: 1px solid #333333;
+        }
+
+        header {
+            background: #000000;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 18px;
+            color: #cccccc;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        .tabs-container {
+            display: flex;
+            background: #0f0f0f;
+            border-bottom: 2px solid #ffffff;
+            gap: 0;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 18px;
+            background: #0f0f0f;
+            border: none;
+            color: #999999;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid transparent;
+            font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+        }
+
+        .tab-button:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .tab-button.active {
+            background: #1a1a1a;
+            color: #ffffff;
+            border-bottom: 3px solid #ffffff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #1a2332;
+        }
+
+        .profile-section h3 {
+            color: #ffffff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-left: 3px solid #ffffff;
+            padding-left: 12px;
+            font-weight: 700;
+        }
+
+        .profile-section p {
+            color: #ffffff;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h3 {
+            color: #ffffff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border-left: 3px solid #ffffff;
+            padding-left: 12px;
+            font-weight: 700;
+        }
+
+        .job {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 2px solid #333333;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .job::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
+            border-radius: 8px 0 0 8px;
+        }
+
+        .job:hover {
+            border-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+        }
+
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-company {
+            font-size: 13px;
+            color: #b0b0b0;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .job-company::before {
+            content: '🏢';
+            font-size: 14px;
+        }
+
+        .job-description {
+            font-size: 13px;
+            color: #d0d0d0;
+            line-height: 1.9;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 2px solid #555555;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #333333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-category:hover {
+            border-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+        }
+
+        .skill-category strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 8px;
+        }
+
+        .skill-category p {
+            color: #d0d0d0;
+            font-size: 13px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .education {
+            background: #0f0f0f;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 3px solid #ffffff;
+        }
+
+        .education-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .education-detail {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 3px;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #333333;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-item::before {
+            content: '✓';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            color: #ffffff;
+            opacity: 0.2;
+        }
+
+        .cert-item:hover {
+            border-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+        }
+
+        .cert-title {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cert-title::before {
+            content: '🏆';
+            font-size: 18px;
+        }
+
+        .cert-date {
+            color: #b0b0b0;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+            font-size: 12px;
+        }
+
+        .project-card {
+            background: #0f0f0f;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 18px;
+            border-left: 3px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: #1a1a1a;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .project-name {
+            margin-bottom: 8px;
+        }
+
+        .project-name a {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-name a:hover {
+            color: #cccccc;
+            text-decoration: underline;
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: #1a1a1a;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 600;
+            border: 1px solid #333333;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .passion-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .passion-card {
+            background: #0f0f0f;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333333;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .passion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        .passion-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .passion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .passion-card:hover .passion-image img {
+            transform: scale(1.05);
+        }
+
+        .passion-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .passion-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 8px;
+        }
+
+        .passion-content p {
+            font-size: 13px;
+            color: #ffffff;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .passion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 30px;
+            background: #0f0f0f;
+            border-radius: 6px;
+            margin-top: 30px;
+            border: 1px solid #333333;
+        }
+
+        .contact-section h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-section p {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .placeholder-content {
+            padding: 60px 20px;
+            text-align: center;
+            color: #cccccc;
+        }
+
+        .placeholder-content h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .placeholder-content p {
+            color: #909090;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .tabs-container {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                flex: 0 0 calc(50% - 1px);
+            }
+
+            .profile-header {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .tab-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic" onerror="this.style.display='none'">
+            <h1>Nikhil M</h1>
+            <div class="subtitle">Principal Software Engineer</div>
+        </header>
+
+        <div class="tabs-container">
+            <button class="tab-button active" onclick="switchTab(event, 'resume')">Resume</button>
+            <button class="tab-button" onclick="switchTab(event, 'projects')">Projects</button>
+            <button class="tab-button" onclick="switchTab(event, 'passion')">Passion</button>
+        </div>
+
+        <!-- RESUME TAB -->
+        <div id="resume" class="tab-content active">
+            <div class="contact-section">
+                <h3>GET IN CONTACT</h3>
+                <p>📧 Email: nikhilm8@outlook.com</p>
+                <p>💼 LinkedIn: https://www.linkedin.com/in/nikhilmenokil/</p>
+                <p>🔗 GitHub: https://nikhonline.github.io/</p>
+            </div>
+
+            <div class="section">
+                <h3>PERSONAL PROFILE</h3>
+                <p style="line-height: 1.8; color: #d0d0d0; font-size: 14px;">
+                    Principal Software Engineer with 13 years of experience building high-performance, scalable systems. Specialized in event-driven microservices architecture, cloud infrastructure, and emerging AI technologies. Proven track record of technical leadership: architected trading platform processing 500K+ transactions per second, led teams of 8-15 engineers. Expertise spans backend optimization, full-stack development, and cutting-edge AI/ML solutions.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>AREAS OF EXPERTISE</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <strong>💾 Backend</strong>
+                        <p>Java, Spring Boot, Kafka, Oracle, SQL, Python</p>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🎨 Frontend</strong>
+                        <p>Angular, JavaScript, Three.js</p>
+                    </div>
+                    <div class="skill-category">
+                        <strong>☁️ Cloud & DevOps</strong>
+                        <p>AWS, Kubernetes, Jenkins</p>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🛠️ Tools & Monitoring</strong>
+                        <p>Git, DataDog, Chaos Engineering</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>🏆 KEY ACHIEVEMENTS</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff;">
+                        <strong style="color: #ffffff;">500K TPS Trading Platform</strong>
+                        <p style="color: #d0d0d0; font-size: 12px; margin-top: 8px;">Architected high-performance system serving millions of daily transactions with 99.99% reliability</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff;">
+                        <strong style="color: #ffffff;">65% Latency Reduction</strong>
+                        <p style="color: #d0d0d0; font-size: 12px; margin-top: 8px;">Optimized Kafka-based event streaming architecture improving message processing performance</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff;">
+                        <strong style="color: #ffffff;">80% Incident Reduction</strong>
+                        <p style="color: #d0d0d0; font-size: 12px; margin-top: 8px;">Implemented comprehensive observability reducing production incidents through proactive monitoring</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff;">
+                        <strong style="color: #ffffff;">50K Vehicle Fleet Tracking</strong>
+                        <p style="color: #d0d0d0; font-size: 12px; margin-top: 8px;">Built real-time GPS monitoring system processing 10M+ daily events across 15+ countries</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff; grid-column: 1 / -1;">
+                        <strong style="color: #ffffff;">Team Leadership</strong>
+                        <p style="color: #d0d0d0; font-size: 12px; margin-top: 8px;">Led teams ranging from 8 to 15+ engineers, fostering technical excellence and innovation</p>
+                    </div>
+                </div>
+            </div>
+                <p style="color: #ffffff; margin-bottom: 15px; font-size: 13px;">Practical experience building and deploying AI/ML systems in production environments</p>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <strong>📊 Machine Learning</strong>
+                        <p>Regression Models, Classification, Predictive Analytics</p>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🤖 Generative AI</strong>
+                        <p>LLM Integration, Prompt Engineering, Fine-tuning Models</p>
+                    </div>
+                    <div class="skill-category">
+                        <strong>🔍 RAG Systems</strong>
+                        <p>Retrieval-Augmented Generation, Vector Databases, Semantic Search</p>
+                    </div>
+                    <div class="skill-category">
+                        <strong>⚙️ AI Frameworks</strong>
+                        <p>LangChain, LangGraph, Agent Design, Workflow Orchestration</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>WORK EXPERIENCE</h3>
+
+                <div class="job">
+                    <div class="job-title">👔 Principal Software Engineer</div>
+                    <div class="job-company">Fidelity Investments | 2018 - Present</div>
+                    <div class="job-description">
+                        • Architected high-throughput trading platform processing 500K+ TPS with <2ms latency, achieving 99.99% uptime
+                    </div>
+                    <div class="job-description">
+                        • Designed event-driven microservices infrastructure using Kafka, reducing message processing latency by 65%
+                    </div>
+                    <div class="job-description">
+                        • Implemented comprehensive resiliency and observability systems, reducing production incidents by 80%
+                    </div>
+                    <div class="job-description">
+                        • Led performance optimization across Kafka, Java, and Oracle, improving system throughput by 40%
+                    </div>
+                    <div class="job-description">
+                        • Managed chaos engineering program covering 50+ microservices, ensuring fault tolerance and reliability
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-title">📊 MODULE LEAD</div>
+                    <div class="job-company">Mindtree | 2014 – 2018</div>
+                    <div class="job-description">
+                        • Led team of 8 engineers designing and developing REST API framework serving 50M+ requests/day
+                    </div>
+                    <div class="job-description">
+                        • Architected API Gateway solution supporting multi-tenant data management for 100+ enterprise clients
+                    </div>
+                    <div class="job-description">
+                        • Improved API response time by 55% through optimization and caching strategies
+                    </div>
+                    <div class="job-description">
+                        • Established API security standards and rate-limiting reducing unauthorized access by 90%
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-title">💻 SOFTWARE ENGINEER</div>
+                    <div class="job-company">Telematics4u | 2012 – 2014</div>
+                    <div class="job-description">
+                        • Developed real-time GPS vehicle monitoring system tracking 50K+ vehicles across 15+ countries
+                    </div>
+                    <div class="job-description">
+                        • Built location tracking pipeline processing 10M+ GPS events daily with <5 second latency
+                    </div>
+                    <div class="job-description">
+                        • Reduced database query time by 70% through indexing optimization and query restructuring
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>EDUCATION</h3>
+                <div class="education">
+                    <div class="education-title">Bachelor of Software Engineering</div>
+                    <div class="education-detail">Sengunthar College, Anna University | 2006 - 2010</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>CERTIFICATIONS & ACHIEVEMENTS</h3>
+                <div class="cert-item">
+                    <div class="cert-title">AWS Solution Architect Associate</div>
+                    <div class="cert-date">Issued Jul 2021</div>
+                    <p style="color: #d0d0d0; font-size: 12px; margin-top: 6px; line-height: 1.5;">
+                        Professional certification demonstrating expertise in designing and deploying scalable AWS solutions.
+                    </p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">AWS Migration Competency</div>
+                    <div class="cert-date">Issued Jun 2021</div>
+                    <p style="color: #d0d0d0; font-size: 12px; margin-top: 6px; line-height: 1.5;">
+                        Recognized competency in migrating and managing enterprise workloads on AWS cloud infrastructure.
+                    </p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">CAFE - Jigsaw</div>
+                    <div class="cert-date">Issued Jan 2021</div>
+                    <p style="color: #d0d0d0; font-size: 12px; margin-top: 6px; line-height: 1.5;">
+                        Advanced certification in cloud architecture framework and enterprise solutions design.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS TAB -->
+        <div id="projects" class="tab-content">
+            <div class="section">
+                <h3>Featured Projects</h3>
+                
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/h3-hexmap-food-finder" target="_blank">H3 Hexmap Food Finder</a>
+                    </div>
+                    <div class="project-tech">Python</div>
+                    <div class="project-description">
+                        Geospatial application that helps users discover restaurants near their location using Uber's H3 hexagonal grid system.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/gemma-rag-engine-prototype" target="_blank">Gemma RAG Engine Prototype</a>
+                    </div>
+                    <div class="project-tech">Python</div>
+                    <div class="project-description">
+                        A lightweight, local-first Retrieval-Augmented Generation (RAG) system powered by Gemma 1B and Ollama.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/ollama_gemma1B_prototype" target="_blank">Ollama Gemma 1B Prototype</a>
+                    </div>
+                    <div class="project-tech">Python</div>
+                    <div class="project-description">
+                        Simple prototype demonstrating how to run Gemma 1B locally using Ollama and Python with basic prompting capabilities.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/MEAN-App" target="_blank">MEAN App</a>
+                    </div>
+                    <div class="project-tech">JavaScript</div>
+                    <div class="project-description">
+                        Employee management application built with MEAN stack (MongoDB, Express, Angular, Node.js).
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/TeamTracker" target="_blank">TeamTracker</a>
+                    </div>
+                    <div class="project-tech">CSS / JavaScript</div>
+                    <div class="project-description">
+                        Tool that monitors and tracks all project members data with real-time insights.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/vmonit" target="_blank">VMonit</a>
+                    </div>
+                    <div class="project-tech">JavaScript</div>
+                    <div class="project-description">
+                        Vehicle monitoring and analytics platform for tracking vehicle fleet performance.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/dome" target="_blank">Dome</a>
+                    </div>
+                    <div class="project-tech">JavaScript</div>
+                    <div class="project-description">
+                        Full-stack web application project showcasing comprehensive web development capabilities.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <a href="https://github.com/nikhonline/iLoveMyCity-ejs-application" target="_blank">I Love My City</a>
+                    </div>
+                    <div class="project-tech">HTML / EJS</div>
+                    <div class="project-description">
+                        Web application built with EJS templating engine showcasing city information and features.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSION TAB -->
+        <div id="passion" class="tab-content">
+            <div class="section">
+                <h3>My Passion & Interests</h3>
+                <p style="color: #ffffff; margin-bottom: 30px; font-size: 14px; line-height: 1.8;">
+                    Beyond the world of technology, I'm driven by diverse passions that shape who I am. These interests keep me balanced, energized, and connected to the world around me.
+                </p>
+                
+                <div class="passion-grid">
+                    <div class="passion-card">
+                        <div class="passion-image">
+                            <img src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?w=400&h=300&fit=crop" alt="Football">
+                        </div>
+                        <div class="passion-content">
+                            <h4>Football</h4>
+                            <p>
+                                Passionate about football - both playing and watching. The sport teaches me teamwork, strategy, and resilience. I enjoy the competitive spirit and the unity that comes with being part of a team.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="passion-card">
+                        <div class="passion-image">
+                            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=300&fit=crop" alt="Reading">
+                        </div>
+                        <div class="passion-content">
+                            <h4>Reading</h4>
+                            <p>
+                                An avid reader who loves exploring diverse genres - from technology and entrepreneurship to fiction and self-improvement. Reading expands my perspective and fuels continuous learning.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="passion-card">
+                        <div class="passion-image">
+                            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=300&fit=crop" alt="Driving">
+                        </div>
+                        <div class="passion-content">
+                            <h4>Driving</h4>
+                            <p>
+                                I enjoy the freedom and adventure that comes with driving. Whether it's a weekend road trip or exploring new routes, driving gives me time to think, reflect, and appreciate the journey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="passion-card">
+                        <div class="passion-image">
+                            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop" alt="Travel">
+                        </div>
+                        <div class="passion-content">
+                            <h4>Travel</h4>
+                            <p>
+                                Travel is my window to the world. Exploring different cultures, cuisines, and landscapes enriches my understanding of the world. Every journey brings new experiences and perspectives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(evt, tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the current tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to the clicked button
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
