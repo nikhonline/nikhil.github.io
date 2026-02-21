@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Resume</title>
+</head>
+<body>
+  <h1>Your Name</h1>
+  <p>Email: your@email.com</p>
+  <h2>Experience</h2>
+  <ul>
+    <li>Job Title – Company (Year-Year)</li>
+  </ul>
+  <h2>Education</h2>
+  <p>Degree – University</p>
+</body>
+</html>
