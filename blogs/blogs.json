@@ -1,0 +1,10 @@
+{
+  "blogs": [
+    {
+      "name": "sample-blog.txt",
+      "title": "My First Blog Post",
+      "description": "A sample blog post demonstrating the blog system"
+    }
+  ]
+}
+

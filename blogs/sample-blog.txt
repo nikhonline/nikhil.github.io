@@ -1,0 +1,20 @@
+# My First Blog Post
+
+## Introduction
+Welcome to my blog section! This is a sample blog post demonstrating how the blog system works.
+
+## How to Use
+You can add blog files in the following formats:
+- .docx (Word documents) - Using Mammoth.js for conversion
+- .txt (Plain text files)
+- .md (Markdown files)
+
+## Features
+Simply add your blog files to the "blogs" folder and they will automatically appear in the blog list on the left. Click on any blog title to read the full content.
+
+## Next Steps
+- Create your own blog posts
+- Experiment with different formats
+- Share your thoughts and ideas with visitors
+
+Thank you for visiting my portfolio!

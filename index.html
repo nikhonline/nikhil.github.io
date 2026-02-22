@@ -442,9 +442,129 @@
             flex: 1;
         }
 
+        .blogs-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .blog-list {
+            background: #0f0f0f;
+            border-radius: 8px;
+            border: 1px solid #333333;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+
+        .blog-file-list {
+            padding: 0;
+        }
+
+        .blog-item {
+            padding: 15px;
+            border-bottom: 1px solid #333333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #d0d0d0;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .blog-item:last-child {
+            border-bottom: none;
+        }
+
+        .blog-item:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding-left: 20px;
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-item.active {
+            background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 100%);
+            color: #ffffff;
+            border-left: 3px solid #ffffff;
+            padding-left: 12px;
+        }
+
+        .blog-item::before {
+            content: '📄';
+            flex-shrink: 0;
+        }
+
+        .blog-content-display {
+            background: #0f0f0f;
+            border-radius: 8px;
+            border: 1px solid #333333;
+            padding: 30px;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+
+        .blog-content-area {
+            color: #d0d0d0;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .blog-content-area h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+        }
+
+        .blog-content-area h3 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .blog-content-area p {
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .blog-content-area strong {
+            color: #ffffff;
+        }
+
+        .blog-content-area ul,
+        .blog-content-area ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .blog-content-area li {
+            margin-bottom: 8px;
+            color: #d0d0d0;
+        }
+
         @media (max-width: 768px) {
             .passion-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .blogs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-list {
+                max-height: 300px;
+            }
+
+            .blog-content-display {
+                max-height: 500px;
             }
         }
 
@@ -541,6 +661,7 @@
         <div class="tabs-container">
             <button class="tab-button active" onclick="switchTab(event, 'resume')">resume</button>
             <button class="tab-button" onclick="switchTab(event, 'projects')">projects</button>
+            <button class="tab-button" onclick="switchTab(event, 'blogs')">blogs</button>
             <button class="tab-button" onclick="switchTab(event, 'passion')">passion</button>
         </div>
 
@@ -807,6 +928,25 @@
             </div>
         </div>
 
+        <!-- BLOGS TAB -->
+        <div id="blogs" class="tab-content">
+            <div class="section">
+                <h3>Blogs & Articles</h3>
+                <div class="blogs-container">
+                    <div class="blog-list">
+                        <div id="blogFileList" class="blog-file-list">
+                            <p style="color: #999999; text-align: center; padding: 20px;">Loading blogs...</p>
+                        </div>
+                    </div>
+                    <div class="blog-content-display">
+                        <div id="blogContentArea" class="blog-content-area">
+                            <p style="color: #999999; text-align: center; padding: 40px;">Select a blog to read</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- PASSION TAB -->
         <div id="passion" class="tab-content">
             <div class="section">
@@ -899,7 +1039,154 @@
 
             // Add active class to the clicked button
             evt.currentTarget.classList.add('active');
+
+            // Load blogs if switching to blogs tab
+            if (tabName === 'blogs') {
+                loadBlogFiles();
+            }
         }
+
+        // Blog Management Functions
+        let blogFiles = [];
+
+        function loadBlogFiles() {
+            const blogFileList = document.getElementById('blogFileList');
+            blogFileList.innerHTML = '';
+
+            // Fetch the blogs.json configuration
+            fetch('blogs/blogs.json')
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Blog data loaded:', data);
+                    blogFiles = [];
+                    
+                    if (!data.blogs || data.blogs.length === 0) {
+                        blogFileList.innerHTML = '<p style="color: #999999; text-align: center; padding: 20px;">No blogs found. Add blog entries to blogs/blogs.json</p>';
+                        return;
+                    }
+
+                    data.blogs.forEach((blog, index) => {
+                        blogFiles.push({
+                            name: blog.name,
+                            path: 'blogs/' + blog.name,
+                            title: blog.title || blog.name.replace(/\.(docx|txt|md)$/, '')
+                        });
+                    });
+
+                    // Display blog files
+                    blogFiles.forEach((blog, index) => {
+                        const blogItem = document.createElement('div');
+                        blogItem.className = 'blog-item';
+                        blogItem.textContent = blog.title;
+                        blogItem.title = blog.title;
+                        blogItem.onclick = () => loadBlogContent(blog, blogItem);
+                        blogFileList.appendChild(blogItem);
+
+                        // Load first blog by default
+                        if (index === 0) {
+                            blogItem.click();
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Blog loading error:', error);
+                    blogFileList.innerHTML = `<p style="color: #ff6b6b; text-align: center; padding: 20px; font-size: 12px;">
+                        <strong>Error loading blogs:</strong><br/>${error.message}<br/>
+                        <small style="color: #999999; margin-top: 10px; display: block;">
+                        Ensure you're serving files through a web server, not opening HTML directly from the file system.
+                        </small>
+                    </p>`;
+                });
+        }
+
+        function loadBlogContent(blog, blogItem) {
+            const contentArea = document.getElementById('blogContentArea');
+            contentArea.innerHTML = '<p style="color: #999999; text-align: center; padding: 40px;">Loading...</p>';
+
+            // Remove active class from all blog items
+            document.querySelectorAll('.blog-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            blogItem.classList.add('active');
+
+            const fileExtension = blog.name.split('.').pop().toLowerCase();
+
+            // GitHub Pages compatible: supports .txt and .md files only
+            if (fileExtension === 'txt') {
+                loadTextFile(blog.path, contentArea);
+            } else if (fileExtension === 'md') {
+                loadMarkdownFile(blog.path, contentArea);
+            } else {
+                contentArea.innerHTML = '<p style="color: #ff6b6b;">Unsupported file format. Supported formats: .txt, .md</p>';
+            }
+        }
+
+        function loadTextFile(path, contentArea) {
+            fetch(path)
+                .then(response => response.text())
+                .then(text => {
+                    // Convert plain text to HTML with basic formatting
+                    const html = text
+                        .split('\n\n')
+                        .map(para => {
+                            // Check if it looks like a heading
+                            if (para.match(/^#+\s/)) {
+                                const level = para.match(/^#+/)[0].length;
+                                const content = para.replace(/^#+\s/, '');
+                                return `<h${level}>${escapeHtml(content)}</h${level}>`;
+                            }
+                            return `<p>${escapeHtml(para).replace(/\n/g, '<br>')}</p>`;
+                        })
+                        .join('');
+                    contentArea.innerHTML = html;
+                })
+                .catch(error => {
+                    contentArea.innerHTML = '<p style="color: #ff6b6b;">Error loading blog: ' + error.message + '</p>';
+                });
+        }
+
+        function loadMarkdownFile(path, contentArea) {
+            fetch(path)
+                .then(response => response.text())
+                .then(markdown => {
+                    // Basic markdown to HTML conversion
+                    let html = escapeHtml(markdown);
+                    
+                    // Headers
+                    html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
+                    html = html.replace(/^## (.*?)$/gm, '<h2>$1</h2>');
+                    html = html.replace(/^# (.*?)$/gm, '<h2>$1</h2>');
+                    
+                    // Bold and italic
+                    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                    
+                    // Line breaks to paragraphs
+                    html = '<p>' + html.split('\n\n').join('</p><p>') + '</p>';
+                    
+                    contentArea.innerHTML = html;
+                })
+                .catch(error => {
+                    contentArea.innerHTML = '<p style="color: #ff6b6b;">Error loading blog: ' + error.message + '</p>';
+                });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize blogs on page load
+        window.addEventListener('load', () => {
+            // Optionally preload blogs
+        });
     </script>
 </body>
 </html>
