@@ -1,9 +1,9 @@
 {
   "blogs": [
     {
-      "name": "sample-blog.txt",
-      "title": "My First Blog Post",
-      "description": "A sample blog post demonstrating the blog system"
+      "name": "How Stock Exchange Works.md",
+      "title": "How Stock Exchange Works",
+      "description": "A blog post on System Design of Stock Exchange"
     }
   ]
 }

@@ -21,7 +21,6 @@
         }
 
         .container {
-            max-width: 900px;
             margin: 0 auto;
             background: #1a1a1a;
             border-radius: 12px;
@@ -30,11 +29,25 @@
             border: 1px solid #333333;
         }
 
-        header {
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             background: #000000;
-            padding: 40px 30px;
-            text-align: center;
+            padding: 30px 40px;
             border-bottom: 2px solid #ffffff;
+            gap: 30px;
+        }
+
+        header {
+            background: transparent;
+            padding: 0;
+            text-align: left;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
         }
 
         header h1 {
@@ -54,15 +67,18 @@
 
         .tabs-container {
             display: flex;
-            background: #0f0f0f;
+            background: #000000;
             border-bottom: 2px solid #ffffff;
             gap: 0;
+            justify-content: flex-end;
+            padding: 0 40px;
+            min-width: 500px;
         }
 
         .tab-button {
-            flex: 1;
-            padding: 18px;
-            background: #0f0f0f;
+            flex: 0 1 auto;
+            padding: 18px 25px;
+            background: #000000;
             border: none;
             color: #999999;
             font-size: 16px;
@@ -607,29 +623,63 @@
         }
 
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 3px solid #ffffff;
             object-fit: cover;
-            margin-bottom: 15px;
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
         }
 
-        header {
+        header h1 {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 16px;
+            color: #cccccc;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .header-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
         }
 
         @media (max-width: 768px) {
+            .header-wrapper {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
             .tabs-container {
-                flex-wrap: wrap;
+                width: 100%;
+                min-width: auto;
+                padding: 0;
+                justify-content: center;
             }
 
             .tab-button {
                 flex: 0 0 calc(50% - 1px);
+                padding: 15px;
+            }
+
+            header {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .header-content {
+                text-align: center;
             }
 
             .profile-header {
@@ -652,32 +702,34 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic" onerror="this.style.display='none'">
-            <h1>Nikhil M</h1>
-            <div class="subtitle">Principal Software Engineer</div>
-        </header>
+        <div class="header-wrapper">
+            <header>
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic" onerror="this.style.display='none'">
+                <div class="header-content">
+                    <h1>Nikhil M</h1>
+                    <div class="subtitle">Principal Software Engineer</div>
+                    <div class="subtitle">
+                                        <p>nikhilm8@outlook.com</p>
+                                        <p>https://www.linkedin.com/in/nikhilmenokil/</p>
+                    </div>
+                </div>
+            </header>
 
-        <div class="tabs-container">
-            <button class="tab-button active" onclick="switchTab(event, 'resume')">resume</button>
-            <button class="tab-button" onclick="switchTab(event, 'projects')">projects</button>
-            <button class="tab-button" onclick="switchTab(event, 'blogs')">blogs</button>
-            <button class="tab-button" onclick="switchTab(event, 'passion')">passion</button>
+            <div class="tabs-container">
+                <button class="tab-button active" onclick="switchTab(event, 'resume')">resume</button>
+                <button class="tab-button" onclick="switchTab(event, 'projects')">projects</button>
+                <button class="tab-button" onclick="switchTab(event, 'blogs')">blogs</button>
+                <button class="tab-button" onclick="switchTab(event, 'passion')">passion</button>
+            </div>
         </div>
 
         <!-- RESUME TAB -->
         <div id="resume" class="tab-content active">
-            <div class="contact-section">
-                <h3>GET IN CONTACT</h3>
-                <p>📧 Email: nikhilm8@outlook.com</p>
-                <p>💼 LinkedIn: https://www.linkedin.com/in/nikhilmenokil/</p>
-                <p>🔗 GitHub: https://nikhonline.github.io/</p>
-            </div>
-
+            
             <div class="section">
                 <h3>PERSONAL PROFILE</h3>
                 <p style="line-height: 1.8; color: #d0d0d0; font-size: 14px;">
-                    Principal Software Engineer with 13 years of experience building high-performance, scalable systems. Specialized in event-driven microservices architecture, cloud infrastructure, and emerging AI technologies. Proven track record of technical leadership: architected trading platform processing 500K+ transactions per second, led teams of 8-15 engineers. Expertise spans backend optimization, full-stack development, and cutting-edge AI/ML solutions.
+                    Principal Software Engineer with 13 years of experience building high-performance, scalable systems. Specialized in event-driven microservices architecture, cloud infrastructure, and emerging AI technologies. Proven track record of technical leadership: architected trading platform processing 500K+ transactions per second. Expertise spans backend optimization, full-stack development, and cutting-edge AI/ML solutions.
                 </p>
             </div>
 
