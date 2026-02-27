@@ -2,17 +2,20 @@
 
 A **stock exchange** is a centralized marketplace where buyers and sellers trade financial instruments such as stocks, bonds, and derivatives. Behind the scenes, it is a highly complex, low-latency distributed system designed to handle millions of orders per second with reliability and fairness. Let’s break down its system design.
 
----
+
 
 ## 🎯 Core Objectives of a Stock Exchange
-- **Price Discovery**: Match buy and sell orders to determine fair market prices.  \
-- **High Throughput & Low Latency**: Execute trades in microseconds.  \
-- **Fairness & Transparency**: Ensure equal access and prevent manipulation.\  
+ **Price Discovery**: Match buy and sell orders to determine fair market prices.  
 
- **Reliability & Fault Tolerance**: Handle failures without disrupting trading.</n></n>
-- **Security & Compliance**: Protect against fraud and meet regulatory standards.
+ **High Throughput & Low Latency**: Execute trades in microseconds.  
 
----
+ **Fairness & Transparency**: Ensure equal access and prevent manipulation. 
+
+ **Reliability & Fault Tolerance**: Handle failures without disrupting trading.
+ 
+ **Security & Compliance**: Protect against fraud and meet regulatory standards.
+
+
 
 ## 📦 Key Components of the System
 
@@ -47,7 +50,7 @@ A **stock exchange** is a centralized marketplace where buyers and sellers trade
 - Real-time surveillance for fraud, insider trading, or anomalies.
 - Automated circuit breakers to pause trading during extreme volatility.
 
----
+
 
 ## ⚙️ Workflow: Life of an Order
 
@@ -60,27 +63,20 @@ A **stock exchange** is a centralized marketplace where buyers and sellers trade
 7. **Market Data Publisher** broadcasts trade info.
 8. **Clearing & Settlement** finalizes financial transactions.
 
----
 
-## 🏗️ System Design Considerations
+## ️ System Design Considerations
 
-| Challenge                | Design Solution |
-|---------------------------|-----------------|
-| Ultra-low latency         | In-memory order book, optimized data structures |
-| High throughput           | Horizontal scaling, distributed gateways |
-| Reliability               | Redundant servers, failover mechanisms |
-| Fairness                  | Deterministic matching algorithms |
-| Security                  | Encryption, authentication, audit logs |
-| Regulatory compliance     | Real-time monitoring, reporting systems |
+Challenges & Design Solution 
+Ultra-low latency: In-memory order book, optimized data structures |
+High throughput : Horizontal scaling, distributed gateways |
+Reliability : Redundant servers, failover mechanisms |
+Fairness : Deterministic matching algorithms |
+Security : Encryption, authentication, audit logs |
+Regulatory compliance : Real-time monitoring, reporting systems |
 
----
 
-## 🚀 Conclusion
+
+## Conclusion
 A stock exchange is not just a marketplace—it is a **mission-critical distributed system**. Its design balances speed, fairness, reliability, and compliance. By understanding its architecture, we gain insights into how modern financial markets operate at scale.
 
----
 
-*References:*
-- ByteByteGo: Design Stock Exchange System Design  
-- AlgoMaster.io: Stock Exchange System Design Interview  
-- T-Vencubator: High-Level Design of Stock Exchange
