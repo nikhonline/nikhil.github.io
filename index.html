@@ -18,6 +18,7 @@
             line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
         }
 
         .container {
@@ -73,6 +74,7 @@
             justify-content: flex-end;
             padding: 0 40px;
             min-width: 500px;
+            flex-wrap: wrap;
         }
 
         .tab-button {
@@ -419,7 +421,7 @@
 
         .passion-image {
             width: 100%;
-            height: 300px;
+            height: 500px;
             overflow: hidden;
             background: #1a1a1a;
         }
@@ -653,7 +655,15 @@
             justify-content: center;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            .container {
+                border-radius: 0;
+            }
+
+            body {
+                padding: 10px;
+            }
+
             .header-wrapper {
                 flex-direction: column;
                 padding: 20px;
@@ -665,21 +675,34 @@
                 min-width: auto;
                 padding: 0;
                 justify-content: center;
+                border-bottom: none;
             }
 
             .tab-button {
-                flex: 0 0 calc(50% - 1px);
-                padding: 15px;
+                flex: 1 1 auto;
+                padding: 12px;
+                font-size: 14px;
             }
 
             header {
                 width: 100%;
                 justify-content: center;
                 text-align: center;
+                flex-direction: column;
+                gap: 10px;
             }
 
             .header-content {
                 text-align: center;
+            }
+
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+
+            header h1 {
+                font-size: 28px;
             }
 
             .profile-header {
@@ -690,12 +713,422 @@
                 grid-template-columns: 1fr;
             }
 
-            header h1 {
-                font-size: 28px;
+            .passion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .passion-image {
+                height: 300px;
             }
 
             .tab-content {
                 padding: 20px;
+            }
+
+            .blogs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-list {
+                max-height: 250px;
+            }
+
+            .blog-content-display {
+                max-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-wrapper {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+                border-bottom: none;
+            }
+
+            .tabs-container {
+                width: 100%;
+                min-width: auto;
+                padding: 0;
+                justify-content: space-around;
+                background: #1a1a1a;
+                border: 1px solid #333333;
+                border-radius: 8px;
+                gap: 0;
+            }
+
+            .tab-button {
+                flex: 1 1 auto;
+                padding: 12px 8px;
+                font-size: 13px;
+                border-bottom: 2px solid transparent;
+            }
+
+            .tab-button.active {
+                background: #000000;
+                border-bottom: 2px solid #ffffff;
+            }
+
+            header {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .header-content {
+                text-align: center;
+            }
+
+            .profile-pic {
+                width: 70px;
+                height: 70px;
+                margin: 0 auto;
+            }
+
+            header h1 {
+                font-size: 24px;
+                margin-bottom: 3px;
+            }
+
+            header .subtitle {
+                font-size: 12px;
+                margin: 0;
+            }
+
+            .profile-header {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .passion-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .passion-image {
+                height: 250px;
+            }
+
+            .tab-content {
+                padding: 15px;
+            }
+
+            .section h3 {
+                font-size: 13px;
+                margin-bottom: 15px;
+            }
+
+            .section {
+                margin-bottom: 25px;
+            }
+
+            .job {
+                padding: 15px;
+                padding-left: 20px;
+                margin-bottom: 15px;
+            }
+
+            .job-title {
+                font-size: 14px;
+            }
+
+            .job-company {
+                font-size: 12px;
+            }
+
+            .job-description {
+                font-size: 12px;
+            }
+
+            .blogs-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .blog-list {
+                max-height: 200px;
+            }
+
+            .blog-content-display {
+                max-height: 350px;
+                padding: 15px;
+            }
+
+            .blog-item {
+                padding: 12px;
+                font-size: 12px;
+            }
+
+            .contact-section {
+                padding: 20px;
+            }
+
+            .skill-category {
+                padding: 15px;
+            }
+
+            .cert-item {
+                padding: 15px;
+            }
+
+            .education {
+                padding: 15px;
+            }
+
+            .project-card {
+                padding: 15px;
+                margin-bottom: 12px;
+            }
+
+            .project-name a {
+                font-size: 14px;
+            }
+
+            .project-description {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            .container {
+                border-radius: 0;
+            }
+
+            .header-wrapper {
+                padding: 10px;
+                gap: 10px;
+                flex-direction: column;
+                border-bottom: 1px solid #333333;
+            }
+
+            .tabs-container {
+                width: 100%;
+                padding: 0;
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid #333333;
+                gap: 0;
+            }
+
+            .tab-button {
+                flex: 1 1 auto;
+                padding: 10px 5px;
+                font-size: 11px;
+                letter-spacing: 0;
+            }
+
+            header {
+                gap: 5px;
+            }
+
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+
+            header h1 {
+                font-size: 20px;
+                letter-spacing: 1px;
+                margin-bottom: 2px;
+            }
+
+            header .subtitle {
+                font-size: 11px;
+            }
+
+            .tab-content {
+                padding: 10px;
+            }
+
+            .section h3 {
+                font-size: 12px;
+                margin-bottom: 10px;
+                padding-left: 8px;
+            }
+
+            .section {
+                margin-bottom: 20px;
+            }
+
+            .section p {
+                font-size: 12px;
+            }
+
+            .job {
+                padding: 12px;
+                padding-left: 15px;
+                margin-bottom: 12px;
+            }
+
+            .job-title {
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+
+            .job-company {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+
+            .job-description {
+                font-size: 11px;
+                line-height: 1.6;
+            }
+
+            .skill-category {
+                padding: 12px;
+            }
+
+            .skill-category strong {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .skill-category p {
+                font-size: 11px;
+            }
+
+            .education {
+                padding: 12px;
+            }
+
+            .education-title {
+                font-size: 13px;
+                margin-bottom: 3px;
+            }
+
+            .education-detail {
+                font-size: 11px;
+            }
+
+            .cert-item {
+                padding: 12px;
+                margin-bottom: 10px;
+            }
+
+            .cert-title {
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+
+            .cert-date {
+                font-size: 11px;
+            }
+
+            .project-card {
+                padding: 12px;
+                margin-bottom: 10px;
+            }
+
+            .project-name a {
+                font-size: 13px;
+            }
+
+            .project-tech {
+                font-size: 10px;
+                padding: 3px 8px;
+                margin-bottom: 8px;
+            }
+
+            .project-description {
+                font-size: 11px;
+                line-height: 1.5;
+            }
+
+            .passion-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .passion-image {
+                height: 200px;
+            }
+
+            .passion-content {
+                padding: 12px;
+            }
+
+            .passion-content h4 {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .passion-content p {
+                font-size: 11px;
+                line-height: 1.6;
+            }
+
+            .blogs-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .blog-list {
+                max-height: 200px;
+            }
+
+            .blog-content-display {
+                max-height: 300px;
+                padding: 10px;
+                border-radius: 6px;
+            }
+
+            .blog-item {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .blog-content-area h2 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .blog-content-area h3 {
+                font-size: 14px;
+                margin-top: 10px;
+                margin-bottom: 8px;
+            }
+
+            .blog-content-area p {
+                font-size: 11px;
+                margin-bottom: 10px;
+            }
+
+            .contact-section {
+                padding: 12px;
+                margin-top: 20px;
+            }
+
+            .contact-section h3 {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .contact-section p {
+                font-size: 11px;
+                word-break: break-word;
+            }
+
+            .placeholder-content {
+                padding: 40px 15px;
+            }
+
+            .placeholder-content h4 {
+                font-size: 14px;
+            }
+
+            .placeholder-content p {
+                font-size: 12px;
             }
         }
     </style>
@@ -729,7 +1162,7 @@
             <div class="section">
                 <h3>PERSONAL PROFILE</h3>
                 <p style="line-height: 1.8; color: #d0d0d0; font-size: 14px;">
-                    Principal Software Engineer with 13 years of experience building high-performance, scalable systems. Specialized in event-driven microservices architecture, cloud infrastructure, and emerging AI technologies. Proven track record of technical leadership: architected trading platform processing 500K+ transactions per second. Expertise spans backend optimization, full-stack development, and cutting-edge AI/ML solutions.
+                    Principal Software Engineer with 13 years of experience building high-performance, scalable systems. Specialized in event-driven microservices architecture, cloud infrastructure, and emerging AI technologies. Proven track record of technical leadership: architected trading platform processing 25K+ transactions per second. Expertise spans backend optimization, full-stack development, and cutting-edge AI/ML solutions.
                 </p>
             </div>
 
@@ -757,9 +1190,9 @@
 
             <div class="section">
                 <h3>🏆 KEY ACHIEVEMENTS</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                     <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff;">
-                        <strong style="color: #ffffff;">500K TPS Trading Platform</strong>
+                        <strong style="color: #ffffff;">25K TPS Trading Platform</strong>
                         <p style="color: #d0d0d0; font-size: 12px; margin-top: 8px;">Architected high-performance system serving millions of daily transactions with 99.99% reliability</p>
                     </div>
                     <div style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 15px; border-radius: 8px; border-left: 3px solid #ffffff;">
@@ -811,7 +1244,7 @@
                     <div class="job-title">👔 Principal Software Engineer</div>
                     <div class="job-company">Fidelity Investments | 2018 - Present</div>
                     <div class="job-description">
-                        • Architected high-throughput trading platform processing 500K+ TPS with <2ms latency, achieving 99.99% uptime
+                        • Architected high-throughput trading platform processing 25K+ TPS with <100ms latency, achieving 99.99% uptime
                     </div>
                     <div class="job-description">
                         • Designed event-driven microservices infrastructure using Kafka, reducing message processing latency by 65%
@@ -1052,18 +1485,6 @@
                             <h4>Drawing</h4>
                             <p>
                                 Drawing is my creative outlet and meditative practice. Whether sketching landscapes or abstract designs, the process of bringing ideas to life on paper helps me unwind and express myself artistically.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="passion-card">
-                        <div class="passion-image">
-                            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=300&fit=crop" alt="Reading">
-                        </div>
-                        <div class="passion-content">
-                            <h4>Reading</h4>
-                            <p>
-                                An avid reader who loves exploring diverse genres - from technology and entrepreneurship to fiction and self-improvement. Reading expands my perspective and fuels continuous learning.
                             </p>
                         </div>
                     </div>

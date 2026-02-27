@@ -5,10 +5,11 @@ A **stock exchange** is a centralized marketplace where buyers and sellers trade
 ---
 
 ## 🎯 Core Objectives of a Stock Exchange
-- **Price Discovery**: Match buy and sell orders to determine fair market prices.
-- **High Throughput & Low Latency**: Execute trades in microseconds.
-- **Fairness & Transparency**: Ensure equal access and prevent manipulation.
-- **Reliability & Fault Tolerance**: Handle failures without disrupting trading.
+- **Price Discovery**: Match buy and sell orders to determine fair market prices.  \
+- **High Throughput & Low Latency**: Execute trades in microseconds.  \
+- **Fairness & Transparency**: Ensure equal access and prevent manipulation.\  
+
+ **Reliability & Fault Tolerance**: Handle failures without disrupting trading.</n></n>
 - **Security & Compliance**: Protect against fraud and meet regulatory standards.
 
 ---
